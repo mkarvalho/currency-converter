@@ -1,59 +1,59 @@
-# CurrencyConverter
+# Currency Converter
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.2.
+Conversor de moedas construído com Angular 22 e Angular Material, usando a [Frankfurter API](https://frankfurter.dev/) para taxas de câmbio atualizadas.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+- Conversão entre qualquer par de moedas suportado pela Frankfurter API
+- Lista de moedas carregada dinamicamente
+- Botão para inverter as moedas de origem e destino
+- Validação do valor digitado (até 9 dígitos, aceita casas decimais)
 
-```bash
-ng serve
-```
+## Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- [Angular](https://angular.dev/) 22 (standalone components, signals)
+- [Angular Material](https://material.angular.io/)
+- [Vitest](https://vitest.dev/) para testes unitários
+- [OpenSpec](https://github.com/Fission-AI/OpenSpec) para gestão de specs e mudanças
 
-## Code scaffolding
+## Desenvolvimento
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para iniciar o servidor de desenvolvimento local:
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+Acesse `http://localhost:4200/`. A aplicação recarrega automaticamente ao alterar os arquivos-fonte.
 
-To build the project run:
+## Build
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os artefatos de build são gerados em `dist/`.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Testes
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+Executa os testes unitários com o Vitest.
 
-For end-to-end (e2e) testing, run:
+## Estrutura do projeto
 
-```bash
-ng e2e
+```
+src/app/
+  app.ts                          # Componente raiz
+  exchange-rate.service.ts        # Cliente HTTP para a Frankfurter API
+  currency-converter/             # Componente de conversão de moedas
+openspec/
+  specs/                          # Especificações vigentes do projeto
+  changes/archive/                # Histórico de mudanças já implementadas
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Documentação adicional
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Consulte o [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) para mais detalhes sobre os comandos disponíveis.
