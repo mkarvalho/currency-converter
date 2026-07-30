@@ -1,0 +1,76 @@
+<section class="converter">
+  <h1>Conversor de Moedas</h1>
+
+  @if (currenciesError()) {
+    <p class="mat-error-text" role="alert">{{ currenciesError() }}</p>
+  }
+
+  <mat-form-field class="field" appearance="outline">
+    <mat-label>Valor</mat-label>
+    <input
+      matInput
+      id="amount"
+      type="text"
+      inputmode="decimal"
+      [ngModel]="amountInput()"
+      (ngModelChange)="amountInput.set($event)"
+      [errorStateMatcher]="amountErrorMatcher"
+      placeholder="Digite um valor"
+    />
+    @if (!isAmountValid()) {
+      <mat-error>Digite um valor numérico de até 9 dígitos.</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="currencies-row">
+    <mat-form-field class="field" appearance="outline">
+      <mat-label>De</mat-label>
+      <mat-select
+        id="from-currency"
+        [ngModel]="fromCurrency()"
+        (ngModelChange)="fromCurrency.set($event)"
+      >
+        @for (currency of currencies(); track currency.code) {
+          <mat-option [value]="currency.code">{{ currency.name }} ({{ currency.code }})</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-icon-button
+      type="button"
+      class="swap-button"
+      (click)="onSwap()"
+      aria-label="Trocar moedas"
+    >
+      <mat-icon>swap_horiz</mat-icon>
+    </button>
+
+    <mat-form-field class="field" appearance="outline">
+      <mat-label>Para</mat-label>
+      <mat-select
+        id="to-currency"
+        [ngModel]="toCurrency()"
+        (ngModelChange)="toCurrency.set($event)"
+      >
+        @for (currency of currencies(); track currency.code) {
+          <mat-option [value]="currency.code">{{ currency.name }} ({{ currency.code }})</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="field" appearance="outline">
+    <mat-label>Resultado</mat-label>
+    <input matInput id="result" type="text" [value]="convertedAmount() ?? '—'" readonly />
+  </mat-form-field>
+
+  @if (rateError()) {
+    <p class="mat-error-text" role="alert">{{ rateError() }}</p>
+  } @else if (isLoadingRate()) {
+    <div class="hint" role="status">
+      <mat-progress-spinner mode="indeterminate" diameter="18"></mat-progress-spinner>
+      <span>Atualizando taxa de câmbio…</span>
+    </div>
+  }
+</section>

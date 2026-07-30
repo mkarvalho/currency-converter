@@ -1,0 +1,47 @@
+.converter {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.field {
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.currencies-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.currencies-row .field {
+  flex: 1;
+}
+
+.swap-button {
+  margin-bottom: 1.25rem;
+}
+
+.mat-error-text {
+  color: #b3261e;
+  font-size: 0.85rem;
+  margin: 0.15rem 0 0.75rem;
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.85rem;
+}
