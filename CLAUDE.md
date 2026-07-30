@@ -12,12 +12,14 @@ Conversor de moedas em Angular 22 (standalone components + signals) com Angular 
 - `npm run build` — build de produção
 - `npm test` — testes unitários com Vitest
 - `npm run watch` — build em modo watch (development)
+- `docker compose up --build` — build multi-stage (Angular + Nginx) e serve em `http://localhost:8080/`
 
 ## Arquitetura
 
 - `src/app/exchange-rate.service.ts` — único ponto de acesso HTTP à Frankfurter API (`getCurrencies`, `getRate`). Erros são convertidos em mensagens em português antes de propagar.
 - `src/app/currency-converter/` — componente principal da conversão. Estado é todo baseado em `signal`/`computed`/`effect`, sem `Validators` do Angular Forms — a validação do valor digitado é feita manualmente (`isAmountValid`) e refletida no Material através de um `ErrorStateMatcher` customizado.
 - `openspec/` — specs e histórico de mudanças gerenciados via [OpenSpec](https://github.com/Fission-AI/OpenSpec). Specs vigentes ficam em `openspec/specs/`; mudanças já implementadas são arquivadas em `openspec/changes/archive/`.
+- `Dockerfile` / `docker-compose.yml` — build multi-stage (Node para compilar, Nginx para servir os artefatos estáticos de `dist/currency-converter/browser`).
 
 ## Convenções
 

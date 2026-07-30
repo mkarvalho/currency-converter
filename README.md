@@ -2,6 +2,8 @@
 
 Conversor de moedas construído com Angular 22 e Angular Material, usando a [Frankfurter API](https://frankfurter.dev/) para taxas de câmbio atualizadas.
 
+Repositório: [github.com/mkarvalho/currency-converter](https://github.com/mkarvalho/currency-converter)
+
 ## Funcionalidades
 
 - Conversão entre qualquer par de moedas suportado pela Frankfurter API
@@ -42,6 +44,16 @@ npm test
 
 Executa os testes unitários com o Vitest.
 
+## Docker
+
+Para rodar a aplicação em produção via Docker:
+
+```bash
+docker compose up --build
+```
+
+Acesse `http://localhost:8080/`. O build multi-stage compila a aplicação Angular e serve os artefatos estáticos via Nginx.
+
 ## Estrutura do projeto
 
 ```
@@ -52,6 +64,8 @@ src/app/
 openspec/
   specs/                          # Especificações vigentes do projeto
   changes/archive/                # Histórico de mudanças já implementadas
+Dockerfile                        # Build multi-stage (Angular + Nginx)
+docker-compose.yml                # Orquestração para deploy local/produção
 ```
 
 ## Documentação adicional
